@@ -29,9 +29,9 @@ namespace MIS_for_SCUT
             MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public static DialogResult ShowChoice(string title,string text)
+        public static DialogResult ShowChoice(string title,string text, MessageBoxIcon mb = MessageBoxIcon.Question)
         {
-            return MessageBox.Show(text, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            return MessageBox.Show(text, title, MessageBoxButtons.YesNo, mb);
         }
 
         public static string GetSaveFilePath(string filter)
@@ -95,11 +95,13 @@ namespace MIS_for_SCUT
                     }
                     dt.Rows.Add(mydr);
                 }
+                mysr.Close();
                 return dt;
             }
             catch (Exception ex)
             {
                 Common.ShowError("Read CSV Failed!", "Read CSV Failed!\n" + ex.Message);
+                
                 return null;
             }
 
@@ -117,6 +119,14 @@ namespace MIS_for_SCUT
                     return Color.Green;
                 default:
                     return Color.Black;
+            }
+        }
+
+        public static string ShowInput(string prompt,string head,string second_prompt = "")
+        {
+            using (InputDialog id = new InputDialog(head, prompt,second_prompt))
+            {
+                return id.ShowDialog() == DialogResult.OK ? id.result : null;
             }
         }
 

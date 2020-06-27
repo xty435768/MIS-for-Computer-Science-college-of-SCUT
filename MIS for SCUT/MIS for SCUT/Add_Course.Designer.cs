@@ -99,10 +99,10 @@
             this.grade_comboBox.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.grade_comboBox.FormattingEnabled = true;
             this.grade_comboBox.Items.AddRange(new object[] {
-            "Freshman",
-            "Sophomore",
-            "Junior",
-            "Senior"});
+            "1",
+            "2",
+            "3",
+            "4"});
             this.grade_comboBox.Location = new System.Drawing.Point(320, 253);
             this.grade_comboBox.Name = "grade_comboBox";
             this.grade_comboBox.Size = new System.Drawing.Size(353, 32);
@@ -149,6 +149,7 @@
             this.course_id_textBox.Name = "course_id_textBox";
             this.course_id_textBox.Size = new System.Drawing.Size(353, 31);
             this.course_id_textBox.TabIndex = 7;
+            this.course_id_textBox.Leave += new System.EventHandler(this.course_id_textBox_Leave);
             // 
             // teacher_id_ComboBox
             // 

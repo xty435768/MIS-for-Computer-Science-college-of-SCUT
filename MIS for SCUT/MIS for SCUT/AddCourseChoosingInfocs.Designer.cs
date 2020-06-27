@@ -33,7 +33,6 @@
             this.course_id_ComboBox = new SergeUtils.EasyCompletionComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.year_textBox = new System.Windows.Forms.TextBox();
-            this.teacher_id_textBox = new System.Windows.Forms.TextBox();
             this.alternative_listBox = new System.Windows.Forms.ListBox();
             this.class_ComboBox = new SergeUtils.EasyCompletionComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@
             this.add_button = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.teacher_id_comboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -98,15 +98,6 @@
             this.year_textBox.TabIndex = 5;
             this.year_textBox.Enter += new System.EventHandler(this.year_textBox_Enter);
             this.year_textBox.Leave += new System.EventHandler(this.year_textBox_Leave);
-            // 
-            // teacher_id_textBox
-            // 
-            this.teacher_id_textBox.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.teacher_id_textBox.Location = new System.Drawing.Point(197, 95);
-            this.teacher_id_textBox.Name = "teacher_id_textBox";
-            this.teacher_id_textBox.ReadOnly = true;
-            this.teacher_id_textBox.Size = new System.Drawing.Size(705, 31);
-            this.teacher_id_textBox.TabIndex = 6;
             // 
             // alternative_listBox
             // 
@@ -249,11 +240,22 @@
             this.label6.TabIndex = 20;
             this.label6.Text = "Chosen students";
             // 
+            // teacher_id_comboBox
+            // 
+            this.teacher_id_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.teacher_id_comboBox.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.teacher_id_comboBox.FormattingEnabled = true;
+            this.teacher_id_comboBox.Location = new System.Drawing.Point(197, 95);
+            this.teacher_id_comboBox.Name = "teacher_id_comboBox";
+            this.teacher_id_comboBox.Size = new System.Drawing.Size(705, 32);
+            this.teacher_id_comboBox.TabIndex = 21;
+            // 
             // AddCourseChoosingInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 736);
+            this.Controls.Add(this.teacher_id_comboBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.add_button);
@@ -267,7 +269,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.class_ComboBox);
             this.Controls.Add(this.alternative_listBox);
-            this.Controls.Add(this.teacher_id_textBox);
             this.Controls.Add(this.year_textBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.course_id_ComboBox);
@@ -291,7 +292,6 @@
         private SergeUtils.EasyCompletionComboBox course_id_ComboBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox year_textBox;
-        private System.Windows.Forms.TextBox teacher_id_textBox;
         private System.Windows.Forms.ListBox alternative_listBox;
         private SergeUtils.EasyCompletionComboBox class_ComboBox;
         private System.Windows.Forms.Label label4;
@@ -305,5 +305,6 @@
         private System.Windows.Forms.Button add_button;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox teacher_id_comboBox;
     }
 }

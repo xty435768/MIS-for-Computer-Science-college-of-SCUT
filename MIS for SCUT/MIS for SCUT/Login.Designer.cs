@@ -63,7 +63,7 @@
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(382, 34);
             this.username.TabIndex = 2;
-            this.username.Text = "admin";
+            this.username.Text = "20203";
             // 
             // password
             // 
@@ -72,7 +72,7 @@
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(382, 34);
             this.password.TabIndex = 3;
-            this.password.Text = "12345678";
+            this.password.Text = "123456";
             this.password.UseSystemPasswordChar = true;
             // 
             // log_in

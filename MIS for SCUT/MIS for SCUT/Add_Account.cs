@@ -58,7 +58,7 @@ namespace MIS_for_SCUT
                    sex_comboBox.Text.Length == 0 || age_textbox.Text.Length == 0||
                    year_textbox.Text.Length == 0||class_textBox.Text.Length == 0)
                 {
-                    Common.ShowError("Add error!","All the field should not be null! Please check again!");
+                    Common.ShowError("Format error!","All the field should not be null! Please check again!");
                     return;
                 }
                 if(!Regex.IsMatch(id_textbox.Text,@"^\d{10}$"))
@@ -69,6 +69,11 @@ namespace MIS_for_SCUT
                 if (!Regex.IsMatch(age_textbox.Text, @"^\d{2}$") && int.Parse(age_textbox.Text) >= 10 && int.Parse(age_textbox.Text) <= 50)
                 {
                     Common.ShowError("Format checking error!", "Entrance age format error! It should between 10 and 50!");
+                    return;
+                }
+                if (!Regex.IsMatch(year_textbox.Text, @"^\d{4}$"))
+                {
+                    Common.ShowError("Format error!", "Entrance year format error! \nPlease chech again!");
                     return;
                 }
                 int add_result = SQL_Help.ExecuteNonQuery("insert into user_data (username,authority) values(@1,0);" +
@@ -189,6 +194,11 @@ namespace MIS_for_SCUT
                 if (dgv.Rows[i].Cells["sex"].Value.ToString() != "Male" && dgv.Rows[i].Cells["sex"].Value.ToString() != "Female")
                 {
                     Common.ShowError("Format checking error!", "Sex format error! It should be either \"Male\" or \"Female\"!\nID: " + dgv.Rows[i].Cells["id"].Value);
+                    format_check = false;
+                }
+                if (!Regex.IsMatch(dgv.Rows[i].Cells["year"].Value.ToString(), @"^\d{4}$"))
+                {
+                    Common.ShowError("Format error!", "Entrance year format error! \nPlease chech again!");
                     format_check = false;
                 }
                 if (format_check)

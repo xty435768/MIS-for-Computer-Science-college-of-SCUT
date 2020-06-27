@@ -17,13 +17,13 @@ namespace MIS_for_SCUT
         public Add_Course()
         {
             InitializeComponent();
-            grade_limit.Add("Freshman", 1);
-            grade_limit.Add("Sophomore", 2);
-            grade_limit.Add("Junior", 3);
-            grade_limit.Add("Senior", 4);
+            //grade_limit.Add("Freshman", 1);
+            //grade_limit.Add("Sophomore", 2);
+            //grade_limit.Add("Junior", 3);
+            //grade_limit.Add("Senior", 4);
         }
         public MySqlConnection connection { set; get; }
-        public Dictionary<string, int> grade_limit = new Dictionary<string, int>();
+        //public Dictionary<string, int> grade_limit = new Dictionary<string, int>();
         public List<string> teacher_list = new List<string>();
         private void Add_Course_Load(object sender, EventArgs e)
         {
@@ -86,12 +86,49 @@ namespace MIS_for_SCUT
                    new MySqlParameter("@name",MySqlDbType.VarChar){ Value = course_name_textBox.Text},
                    new MySqlParameter("@teacher",MySqlDbType.VarChar){ Value = current_teacher_id},
                    new MySqlParameter("@credit",MySqlDbType.Double){ Value = credit_textBox.Text},
-                   new MySqlParameter("@grade",MySqlDbType.Int32){ Value = grade_limit[grade_comboBox.Text]},
+                   new MySqlParameter("@grade",MySqlDbType.Int32){ Value = grade_comboBox.Text},
                    year_parameter,
-                   new MySqlParameter("@new_course",MySqlDbType.VarChar){ Value = teacher_current_courses+(teacher_current_courses.Length == 0?"":",")+course_name_textBox.Text }
+                   new MySqlParameter("@new_course",MySqlDbType.VarChar){ Value = teacher_current_courses+(teacher_current_courses.Length == 0?"":",")+course_id_textBox.Text }
                  }) > 0)
             {
                 Common.ShowInfo("Done", "Add successful!");
+                cancel_year_textBox.ReadOnly = false;
+                course_name_textBox.ReadOnly = false;
+                credit_textBox.ReadOnly = false;
+                grade_comboBox.Enabled = true;
+                course_name_textBox.Clear();
+                credit_textBox.Clear();
+                grade_comboBox.Text = "";
+                cancel_year_textBox.Clear();
+                course_id_textBox.Focus();
+            }
+        }
+
+        private void course_id_textBox_Leave(object sender, EventArgs e)
+        {
+            if (course_id_textBox.Text.Length == 0) return;
+            DataTable dt = SQL_Help.ExecuteDataTable("select distinct name,credit,grade_limit,canceled_year from course_info where id=@id;", connection, new MySqlParameter[] { new MySqlParameter("@id", MySqlDbType.VarChar) { Value = course_id_textBox.Text } });
+            if(dt.Rows.Count == 0)
+            {
+                cancel_year_textBox.ReadOnly = false;
+                course_name_textBox.ReadOnly = false;
+                credit_textBox.ReadOnly = false;
+                grade_comboBox.Enabled = true;
+                course_name_textBox.Clear();
+                credit_textBox.Clear();
+                grade_comboBox.Text = "";
+                cancel_year_textBox.Clear();
+            }
+            else
+            {
+                course_name_textBox.Text = dt.Rows[0][0].ToString();
+                credit_textBox.Text = dt.Rows[0][1].ToString();
+                grade_comboBox.Text = dt.Rows[0][2].ToString();
+                cancel_year_textBox.Text = dt.Rows[0][3].ToString();
+                course_name_textBox.ReadOnly = true;
+                credit_textBox.ReadOnly = true;
+                grade_comboBox.Enabled = false;
+                cancel_year_textBox.ReadOnly = true;
             }
         }
     }

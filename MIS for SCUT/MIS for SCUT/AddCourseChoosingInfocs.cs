@@ -50,7 +50,7 @@ namespace MIS_for_SCUT
             year_textBox.ForeColor = Color.Gray;
             student_id_ComboBox.Text = "Input student id here to add single student...";
             student_id_ComboBox.ForeColor = Color.Gray;
-            course_dt = SQL_Help.ExecuteDataTable("select id,name,teacher_id from course_info;", connection);
+            course_dt = SQL_Help.ExecuteDataTable("select distinct id,name from course_info;", connection);
             for (int i = 0; i < course_dt.Rows.Count; i++)
             {
                 string comboBox_item = course_dt.Rows[i][0] + "(" + course_dt.Rows[i][1] + ")";
@@ -76,15 +76,17 @@ namespace MIS_for_SCUT
 
         private void course_id_ComboBox_TextChanged(object sender, EventArgs e)
         {
+            teacher_id_comboBox.Items.Clear();
             int index = course_combobox_items.IndexOf(course_id_ComboBox.Text);
             if (index != -1)
             {
-                DataTable teacher_dt = SQL_Help.ExecuteDataTable("select name from teacher_info where id = @id;", connection,new MySqlParameter[] { new MySqlParameter("@id", MySqlDbType.VarChar) { Value = course_dt.Rows[index][2]} });
-                teacher_id_textBox.Text = course_dt.Rows[index][2] + "("+ teacher_dt.Rows[0][0].ToString()+")";
-            }
-            else
-            {
-                teacher_id_textBox.Text = "No corresponding teacher found.";
+                DataTable teacher_dt = SQL_Help.ExecuteDataTable("select id,name from teacher_info where id in (select teacher_id from course_info where id=@id);", connection,new MySqlParameter[] { new MySqlParameter("@id", MySqlDbType.VarChar) { Value = course_id_ComboBox.Text.Substring(0,7)} });
+                for (int i = 0; i < teacher_dt.Rows.Count; i++)
+                {
+                    teacher_id_comboBox.Items.Add(teacher_dt.Rows[i][0].ToString() + "(" + teacher_dt.Rows[i][1].ToString() + ")");
+                }
+                teacher_id_comboBox.Text = teacher_id_comboBox.Items[0].ToString();
+                //teacher_id_textBox.Text = course_dt.Rows[index][2] + "("+ teacher_dt.Rows[0][0].ToString()+")";
             }
         }
 
@@ -226,7 +228,7 @@ namespace MIS_for_SCUT
                 Common.ShowError("Format error!", "Chosen year format error! \nPlease chech again!");
                 return;
             }
-            using (CourseAddProcess cap = new CourseAddProcess(course_id_ComboBox.Text, teacher_id_textBox.Text, chosen_listBox.Items, year_textBox.Text) { connection = connection })
+            using (CourseAddProcess cap = new CourseAddProcess(course_id_ComboBox.Text, teacher_id_comboBox.Text, chosen_listBox.Items, year_textBox.Text) { connection = connection })
             {
                 cap.ShowDialog();
             }

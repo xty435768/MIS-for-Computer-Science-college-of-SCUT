@@ -39,9 +39,16 @@
             this.Course = new System.Windows.Forms.ToolStripMenuItem();
             this.addCourseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.queryCourseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.About = new System.Windows.Forms.ToolStripMenuItem();
             this.addCourseChoosingInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifyInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.About = new System.Windows.Forms.ToolStripMenuItem();
+            this.submitScoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.queryStudentInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgv = new System.Windows.Forms.DataGridView();
+            this.queryStudentScoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -50,10 +57,12 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Account,
             this.Course,
+            this.informationToolStripMenuItem,
             this.About});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1201, 33);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(1110, 35);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -120,7 +129,8 @@
             this.Course.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addCourseToolStripMenuItem,
             this.queryCourseToolStripMenuItem,
-            this.addCourseChoosingInfoToolStripMenuItem});
+            this.addCourseChoosingInfoToolStripMenuItem,
+            this.submitScoreToolStripMenuItem});
             this.Course.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Course.Name = "Course";
             this.Course.Size = new System.Drawing.Size(88, 29);
@@ -129,7 +139,7 @@
             // addCourseToolStripMenuItem
             // 
             this.addCourseToolStripMenuItem.Name = "addCourseToolStripMenuItem";
-            this.addCourseToolStripMenuItem.Size = new System.Drawing.Size(216, 30);
+            this.addCourseToolStripMenuItem.Size = new System.Drawing.Size(333, 30);
             this.addCourseToolStripMenuItem.Text = "Add Course";
             this.addCourseToolStripMenuItem.Visible = false;
             this.addCourseToolStripMenuItem.Click += new System.EventHandler(this.addCourseToolStripMenuItem_Click);
@@ -137,15 +147,9 @@
             // queryCourseToolStripMenuItem
             // 
             this.queryCourseToolStripMenuItem.Name = "queryCourseToolStripMenuItem";
-            this.queryCourseToolStripMenuItem.Size = new System.Drawing.Size(216, 30);
-            this.queryCourseToolStripMenuItem.Text = "Query Course";
-            // 
-            // About
-            // 
-            this.About.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.About.Name = "About";
-            this.About.Size = new System.Drawing.Size(80, 29);
-            this.About.Text = "About";
+            this.queryCourseToolStripMenuItem.Size = new System.Drawing.Size(333, 30);
+            this.queryCourseToolStripMenuItem.Text = "Query Course Information";
+            this.queryCourseToolStripMenuItem.Click += new System.EventHandler(this.queryCourseToolStripMenuItem_Click);
             // 
             // addCourseChoosingInfoToolStripMenuItem
             // 
@@ -155,14 +159,78 @@
             this.addCourseChoosingInfoToolStripMenuItem.Visible = false;
             this.addCourseChoosingInfoToolStripMenuItem.Click += new System.EventHandler(this.addCourseChoosingInfoToolStripMenuItem_Click);
             // 
+            // informationToolStripMenuItem
+            // 
+            this.informationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modifyInformationToolStripMenuItem,
+            this.queryStudentInformationToolStripMenuItem,
+            this.queryStudentScoreToolStripMenuItem});
+            this.informationToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.informationToolStripMenuItem.Name = "informationToolStripMenuItem";
+            this.informationToolStripMenuItem.Size = new System.Drawing.Size(133, 29);
+            this.informationToolStripMenuItem.Text = "Information";
+            // 
+            // modifyInformationToolStripMenuItem
+            // 
+            this.modifyInformationToolStripMenuItem.Name = "modifyInformationToolStripMenuItem";
+            this.modifyInformationToolStripMenuItem.Size = new System.Drawing.Size(338, 30);
+            this.modifyInformationToolStripMenuItem.Text = "Modify Information";
+            this.modifyInformationToolStripMenuItem.Visible = false;
+            this.modifyInformationToolStripMenuItem.Click += new System.EventHandler(this.modifyInformationToolStripMenuItem_Click);
+            // 
+            // About
+            // 
+            this.About.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.About.Name = "About";
+            this.About.Size = new System.Drawing.Size(80, 29);
+            this.About.Text = "About";
+            // 
+            // submitScoreToolStripMenuItem
+            // 
+            this.submitScoreToolStripMenuItem.Name = "submitScoreToolStripMenuItem";
+            this.submitScoreToolStripMenuItem.Size = new System.Drawing.Size(333, 30);
+            this.submitScoreToolStripMenuItem.Text = "Submit Score";
+            this.submitScoreToolStripMenuItem.Visible = false;
+            this.submitScoreToolStripMenuItem.Click += new System.EventHandler(this.submitScoreToolStripMenuItem_Click);
+            // 
+            // queryStudentInformationToolStripMenuItem
+            // 
+            this.queryStudentInformationToolStripMenuItem.Name = "queryStudentInformationToolStripMenuItem";
+            this.queryStudentInformationToolStripMenuItem.Size = new System.Drawing.Size(338, 30);
+            this.queryStudentInformationToolStripMenuItem.Text = "Query Student Information";
+            this.queryStudentInformationToolStripMenuItem.Click += new System.EventHandler(this.queryStudentInformationToolStripMenuItem_Click);
+            // 
+            // dgv
+            // 
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Location = new System.Drawing.Point(28, 53);
+            this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
+            this.dgv.RowTemplate.Height = 27;
+            this.dgv.Size = new System.Drawing.Size(1061, 544);
+            this.dgv.TabIndex = 1;
+            // 
+            // queryStudentScoreToolStripMenuItem
+            // 
+            this.queryStudentScoreToolStripMenuItem.Name = "queryStudentScoreToolStripMenuItem";
+            this.queryStudentScoreToolStripMenuItem.Size = new System.Drawing.Size(338, 30);
+            this.queryStudentScoreToolStripMenuItem.Text = "Query Student Score";
+            this.queryStudentScoreToolStripMenuItem.Click += new System.EventHandler(this.queryStudentScoreToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1201, 683);
+            this.ClientSize = new System.Drawing.Size(1110, 626);
+            this.Controls.Add(this.dgv);
             this.Controls.Add(this.menuStrip1);
+            this.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "MainWindow";
@@ -171,6 +239,7 @@
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,5 +260,11 @@
         private System.Windows.Forms.ToolStripMenuItem addCourseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem queryCourseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addCourseChoosingInfoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem informationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modifyInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem submitScoreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem queryStudentInformationToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.ToolStripMenuItem queryStudentScoreToolStripMenuItem;
     }
 }
