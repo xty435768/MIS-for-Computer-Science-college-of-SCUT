@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.student_info_tabPage = new System.Windows.Forms.TabPage();
             this.student_apply_button = new System.Windows.Forms.Button();
             this.student_new_info_groupBox = new System.Windows.Forms.GroupBox();
@@ -60,6 +60,25 @@
             this.student_query_button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.student_current_id_textBox = new System.Windows.Forms.TextBox();
+            this.teacher_info_tabPage = new System.Windows.Forms.TabPage();
+            this.label27 = new System.Windows.Forms.Label();
+            this.modify_course_info_link = new System.Windows.Forms.Button();
+            this.teacher_apply_button = new System.Windows.Forms.Button();
+            this.teacher_new_info_groupBox = new System.Windows.Forms.GroupBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.teacher_new_name_textBox = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.teacher_new_id_textBox = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.teacher_courses_textBox = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.teacher_delete_button = new System.Windows.Forms.Button();
+            this.label36 = new System.Windows.Forms.Label();
+            this.teacher_current_name_textBox = new System.Windows.Forms.TextBox();
+            this.teacher_clear_button = new System.Windows.Forms.Button();
+            this.teacher_query_button = new System.Windows.Forms.Button();
+            this.label37 = new System.Windows.Forms.Label();
+            this.teacher_current_id_textBox = new System.Windows.Forms.TextBox();
             this.course_info_tabPage = new System.Windows.Forms.TabPage();
             this.course_apply_button = new System.Windows.Forms.Button();
             this.course_new_info_groupBox = new System.Windows.Forms.GroupBox();
@@ -98,10 +117,13 @@
             this.choosing_student_id_textbox = new System.Windows.Forms.TextBox();
             this.choosing_clear_button = new System.Windows.Forms.Button();
             this.choosing_query_button = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.student_info_tabPage.SuspendLayout();
             this.student_new_info_groupBox.SuspendLayout();
             this.student_current_info_groupBox.SuspendLayout();
+            this.teacher_info_tabPage.SuspendLayout();
+            this.teacher_new_info_groupBox.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.course_info_tabPage.SuspendLayout();
             this.course_new_info_groupBox.SuspendLayout();
             this.course_current_info_groupBox.SuspendLayout();
@@ -109,17 +131,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.student_info_tabPage);
-            this.tabControl1.Controls.Add(this.course_info_tabPage);
-            this.tabControl1.Controls.Add(this.course_choosing_info_tabPage);
-            this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(845, 611);
-            this.tabControl1.TabIndex = 0;
+            this.tabControl.Controls.Add(this.student_info_tabPage);
+            this.tabControl.Controls.Add(this.teacher_info_tabPage);
+            this.tabControl.Controls.Add(this.course_info_tabPage);
+            this.tabControl.Controls.Add(this.course_choosing_info_tabPage);
+            this.tabControl.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(922, 591);
+            this.tabControl.TabIndex = 0;
             // 
             // student_info_tabPage
             // 
@@ -129,7 +152,7 @@
             this.student_info_tabPage.Location = new System.Drawing.Point(4, 33);
             this.student_info_tabPage.Name = "student_info_tabPage";
             this.student_info_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.student_info_tabPage.Size = new System.Drawing.Size(837, 574);
+            this.student_info_tabPage.Size = new System.Drawing.Size(914, 554);
             this.student_info_tabPage.TabIndex = 0;
             this.student_info_tabPage.Text = "Modify student info";
             this.student_info_tabPage.UseVisualStyleBackColor = true;
@@ -137,7 +160,7 @@
             // student_apply_button
             // 
             this.student_apply_button.Enabled = false;
-            this.student_apply_button.Location = new System.Drawing.Point(512, 462);
+            this.student_apply_button.Location = new System.Drawing.Point(575, 454);
             this.student_apply_button.Name = "student_apply_button";
             this.student_apply_button.Size = new System.Drawing.Size(265, 50);
             this.student_apply_button.TabIndex = 3;
@@ -160,7 +183,7 @@
             this.student_new_info_groupBox.Controls.Add(this.label12);
             this.student_new_info_groupBox.Controls.Add(this.student_new_id_textBox);
             this.student_new_info_groupBox.Enabled = false;
-            this.student_new_info_groupBox.Location = new System.Drawing.Point(466, 26);
+            this.student_new_info_groupBox.Location = new System.Drawing.Point(521, 26);
             this.student_new_info_groupBox.Name = "student_new_info_groupBox";
             this.student_new_info_groupBox.Size = new System.Drawing.Size(340, 412);
             this.student_new_info_groupBox.TabIndex = 2;
@@ -286,7 +309,7 @@
             this.student_current_info_groupBox.Controls.Add(this.student_query_button);
             this.student_current_info_groupBox.Controls.Add(this.label1);
             this.student_current_info_groupBox.Controls.Add(this.student_current_id_textBox);
-            this.student_current_info_groupBox.Location = new System.Drawing.Point(23, 26);
+            this.student_current_info_groupBox.Location = new System.Drawing.Point(47, 26);
             this.student_current_info_groupBox.Name = "student_current_info_groupBox";
             this.student_current_info_groupBox.Size = new System.Drawing.Size(409, 506);
             this.student_current_info_groupBox.TabIndex = 1;
@@ -425,6 +448,197 @@
             this.student_current_id_textBox.Size = new System.Drawing.Size(249, 31);
             this.student_current_id_textBox.TabIndex = 0;
             // 
+            // teacher_info_tabPage
+            // 
+            this.teacher_info_tabPage.Controls.Add(this.label27);
+            this.teacher_info_tabPage.Controls.Add(this.modify_course_info_link);
+            this.teacher_info_tabPage.Controls.Add(this.teacher_apply_button);
+            this.teacher_info_tabPage.Controls.Add(this.teacher_new_info_groupBox);
+            this.teacher_info_tabPage.Controls.Add(this.groupBox2);
+            this.teacher_info_tabPage.Location = new System.Drawing.Point(4, 33);
+            this.teacher_info_tabPage.Name = "teacher_info_tabPage";
+            this.teacher_info_tabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.teacher_info_tabPage.Size = new System.Drawing.Size(914, 554);
+            this.teacher_info_tabPage.TabIndex = 3;
+            this.teacher_info_tabPage.Text = "Modify teacher info";
+            this.teacher_info_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // label27
+            // 
+            this.label27.Location = new System.Drawing.Point(519, 346);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(342, 99);
+            this.label27.TabIndex = 8;
+            this.label27.Text = "If you want to modify the courses that this teacher can teach, please click this " +
+    "button:";
+            // 
+            // modify_course_info_link
+            // 
+            this.modify_course_info_link.Location = new System.Drawing.Point(565, 448);
+            this.modify_course_info_link.Name = "modify_course_info_link";
+            this.modify_course_info_link.Size = new System.Drawing.Size(264, 54);
+            this.modify_course_info_link.TabIndex = 7;
+            this.modify_course_info_link.Text = "Modify course info";
+            this.modify_course_info_link.UseVisualStyleBackColor = true;
+            this.modify_course_info_link.Click += new System.EventHandler(this.modify_course_info_link_Click);
+            // 
+            // teacher_apply_button
+            // 
+            this.teacher_apply_button.Enabled = false;
+            this.teacher_apply_button.Location = new System.Drawing.Point(564, 238);
+            this.teacher_apply_button.Name = "teacher_apply_button";
+            this.teacher_apply_button.Size = new System.Drawing.Size(265, 50);
+            this.teacher_apply_button.TabIndex = 6;
+            this.teacher_apply_button.Text = "Apply";
+            this.teacher_apply_button.UseVisualStyleBackColor = true;
+            this.teacher_apply_button.Click += new System.EventHandler(this.teacher_apply_button_Click);
+            // 
+            // teacher_new_info_groupBox
+            // 
+            this.teacher_new_info_groupBox.Controls.Add(this.label30);
+            this.teacher_new_info_groupBox.Controls.Add(this.teacher_new_name_textBox);
+            this.teacher_new_info_groupBox.Controls.Add(this.label31);
+            this.teacher_new_info_groupBox.Controls.Add(this.teacher_new_id_textBox);
+            this.teacher_new_info_groupBox.Enabled = false;
+            this.teacher_new_info_groupBox.Location = new System.Drawing.Point(521, 26);
+            this.teacher_new_info_groupBox.Name = "teacher_new_info_groupBox";
+            this.teacher_new_info_groupBox.Size = new System.Drawing.Size(340, 167);
+            this.teacher_new_info_groupBox.TabIndex = 5;
+            this.teacher_new_info_groupBox.TabStop = false;
+            this.teacher_new_info_groupBox.Text = "New Information";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(18, 110);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(72, 25);
+            this.label30.TabIndex = 5;
+            this.label30.Text = "Name:";
+            // 
+            // teacher_new_name_textBox
+            // 
+            this.teacher_new_name_textBox.Location = new System.Drawing.Point(112, 110);
+            this.teacher_new_name_textBox.Name = "teacher_new_name_textBox";
+            this.teacher_new_name_textBox.Size = new System.Drawing.Size(213, 31);
+            this.teacher_new_name_textBox.TabIndex = 4;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(18, 51);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(37, 25);
+            this.label31.TabIndex = 1;
+            this.label31.Text = "ID:";
+            // 
+            // teacher_new_id_textBox
+            // 
+            this.teacher_new_id_textBox.Location = new System.Drawing.Point(112, 48);
+            this.teacher_new_id_textBox.Name = "teacher_new_id_textBox";
+            this.teacher_new_id_textBox.Size = new System.Drawing.Size(213, 31);
+            this.teacher_new_id_textBox.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.teacher_courses_textBox);
+            this.groupBox2.Controls.Add(this.label26);
+            this.groupBox2.Controls.Add(this.teacher_delete_button);
+            this.groupBox2.Controls.Add(this.label36);
+            this.groupBox2.Controls.Add(this.teacher_current_name_textBox);
+            this.groupBox2.Controls.Add(this.teacher_clear_button);
+            this.groupBox2.Controls.Add(this.teacher_query_button);
+            this.groupBox2.Controls.Add(this.label37);
+            this.groupBox2.Controls.Add(this.teacher_current_id_textBox);
+            this.groupBox2.Location = new System.Drawing.Point(47, 26);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(409, 495);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Current Information";
+            // 
+            // teacher_courses_textBox
+            // 
+            this.teacher_courses_textBox.Location = new System.Drawing.Point(23, 242);
+            this.teacher_courses_textBox.Multiline = true;
+            this.teacher_courses_textBox.Name = "teacher_courses_textBox";
+            this.teacher_courses_textBox.ReadOnly = true;
+            this.teacher_courses_textBox.Size = new System.Drawing.Size(357, 162);
+            this.teacher_courses_textBox.TabIndex = 16;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(18, 203);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(304, 25);
+            this.label26.TabIndex = 15;
+            this.label26.Text = "Courses that this teacher teach:";
+            // 
+            // teacher_delete_button
+            // 
+            this.teacher_delete_button.Enabled = false;
+            this.teacher_delete_button.Location = new System.Drawing.Point(56, 426);
+            this.teacher_delete_button.Name = "teacher_delete_button";
+            this.teacher_delete_button.Size = new System.Drawing.Size(285, 50);
+            this.teacher_delete_button.TabIndex = 14;
+            this.teacher_delete_button.Text = "Delete this teacher";
+            this.teacher_delete_button.UseVisualStyleBackColor = true;
+            this.teacher_delete_button.Click += new System.EventHandler(this.teacher_delete_button_Click);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(18, 159);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(72, 25);
+            this.label36.TabIndex = 5;
+            this.label36.Text = "Name:";
+            // 
+            // teacher_current_name_textBox
+            // 
+            this.teacher_current_name_textBox.Location = new System.Drawing.Point(131, 156);
+            this.teacher_current_name_textBox.Name = "teacher_current_name_textBox";
+            this.teacher_current_name_textBox.ReadOnly = true;
+            this.teacher_current_name_textBox.Size = new System.Drawing.Size(249, 31);
+            this.teacher_current_name_textBox.TabIndex = 4;
+            // 
+            // teacher_clear_button
+            // 
+            this.teacher_clear_button.Location = new System.Drawing.Point(241, 97);
+            this.teacher_clear_button.Name = "teacher_clear_button";
+            this.teacher_clear_button.Size = new System.Drawing.Size(129, 38);
+            this.teacher_clear_button.TabIndex = 3;
+            this.teacher_clear_button.Text = "Clear";
+            this.teacher_clear_button.UseVisualStyleBackColor = true;
+            this.teacher_clear_button.Click += new System.EventHandler(this.teacher_clear_button_Click);
+            // 
+            // teacher_query_button
+            // 
+            this.teacher_query_button.Location = new System.Drawing.Point(23, 97);
+            this.teacher_query_button.Name = "teacher_query_button";
+            this.teacher_query_button.Size = new System.Drawing.Size(129, 38);
+            this.teacher_query_button.TabIndex = 2;
+            this.teacher_query_button.Text = "Query";
+            this.teacher_query_button.UseVisualStyleBackColor = true;
+            this.teacher_query_button.Click += new System.EventHandler(this.teacher_query_button_Click);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(18, 51);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(37, 25);
+            this.label37.TabIndex = 1;
+            this.label37.Text = "ID:";
+            // 
+            // teacher_current_id_textBox
+            // 
+            this.teacher_current_id_textBox.Location = new System.Drawing.Point(131, 48);
+            this.teacher_current_id_textBox.Name = "teacher_current_id_textBox";
+            this.teacher_current_id_textBox.Size = new System.Drawing.Size(249, 31);
+            this.teacher_current_id_textBox.TabIndex = 0;
+            // 
             // course_info_tabPage
             // 
             this.course_info_tabPage.Controls.Add(this.course_apply_button);
@@ -433,7 +647,7 @@
             this.course_info_tabPage.Location = new System.Drawing.Point(4, 33);
             this.course_info_tabPage.Name = "course_info_tabPage";
             this.course_info_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.course_info_tabPage.Size = new System.Drawing.Size(837, 574);
+            this.course_info_tabPage.Size = new System.Drawing.Size(914, 554);
             this.course_info_tabPage.TabIndex = 1;
             this.course_info_tabPage.Text = "Modify course info";
             this.course_info_tabPage.UseVisualStyleBackColor = true;
@@ -441,7 +655,7 @@
             // course_apply_button
             // 
             this.course_apply_button.Enabled = false;
-            this.course_apply_button.Location = new System.Drawing.Point(521, 449);
+            this.course_apply_button.Location = new System.Drawing.Point(575, 454);
             this.course_apply_button.Name = "course_apply_button";
             this.course_apply_button.Size = new System.Drawing.Size(265, 50);
             this.course_apply_button.TabIndex = 14;
@@ -464,7 +678,7 @@
             this.course_new_info_groupBox.Controls.Add(this.label24);
             this.course_new_info_groupBox.Controls.Add(this.course_new_id_textBox);
             this.course_new_info_groupBox.Enabled = false;
-            this.course_new_info_groupBox.Location = new System.Drawing.Point(466, 26);
+            this.course_new_info_groupBox.Location = new System.Drawing.Point(521, 26);
             this.course_new_info_groupBox.Name = "course_new_info_groupBox";
             this.course_new_info_groupBox.Size = new System.Drawing.Size(359, 390);
             this.course_new_info_groupBox.TabIndex = 3;
@@ -595,7 +809,7 @@
             this.course_current_info_groupBox.Controls.Add(this.course_query_button);
             this.course_current_info_groupBox.Controls.Add(this.label18);
             this.course_current_info_groupBox.Controls.Add(this.course_current_id_textBox);
-            this.course_current_info_groupBox.Location = new System.Drawing.Point(23, 26);
+            this.course_current_info_groupBox.Location = new System.Drawing.Point(47, 26);
             this.course_current_info_groupBox.Name = "course_current_info_groupBox";
             this.course_current_info_groupBox.Size = new System.Drawing.Size(409, 506);
             this.course_current_info_groupBox.TabIndex = 2;
@@ -757,7 +971,7 @@
             this.course_choosing_info_tabPage.Location = new System.Drawing.Point(4, 33);
             this.course_choosing_info_tabPage.Name = "course_choosing_info_tabPage";
             this.course_choosing_info_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.course_choosing_info_tabPage.Size = new System.Drawing.Size(837, 574);
+            this.course_choosing_info_tabPage.Size = new System.Drawing.Size(914, 554);
             this.course_choosing_info_tabPage.TabIndex = 2;
             this.course_choosing_info_tabPage.Text = "Modify course choosing info";
             this.course_choosing_info_tabPage.UseVisualStyleBackColor = true;
@@ -768,11 +982,11 @@
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(28, 82);
+            this.dgv.Location = new System.Drawing.Point(13, 82);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.RowTemplate.Height = 27;
-            this.dgv.Size = new System.Drawing.Size(767, 399);
+            this.dgv.Size = new System.Drawing.Size(885, 456);
             this.dgv.TabIndex = 7;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             // 
@@ -789,12 +1003,13 @@
             // 
             this.choosing_student_id_textbox.Location = new System.Drawing.Point(147, 28);
             this.choosing_student_id_textbox.Name = "choosing_student_id_textbox";
-            this.choosing_student_id_textbox.Size = new System.Drawing.Size(276, 31);
+            this.choosing_student_id_textbox.Size = new System.Drawing.Size(372, 31);
             this.choosing_student_id_textbox.TabIndex = 5;
+            this.choosing_student_id_textbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.choosing_student_id_textbox_KeyDown);
             // 
             // choosing_clear_button
             // 
-            this.choosing_clear_button.Location = new System.Drawing.Point(641, 24);
+            this.choosing_clear_button.Location = new System.Drawing.Point(731, 24);
             this.choosing_clear_button.Name = "choosing_clear_button";
             this.choosing_clear_button.Size = new System.Drawing.Size(129, 38);
             this.choosing_clear_button.TabIndex = 4;
@@ -804,7 +1019,7 @@
             // 
             // choosing_query_button
             // 
-            this.choosing_query_button.Location = new System.Drawing.Point(463, 24);
+            this.choosing_query_button.Location = new System.Drawing.Point(550, 24);
             this.choosing_query_button.Name = "choosing_query_button";
             this.choosing_query_button.Size = new System.Drawing.Size(129, 38);
             this.choosing_query_button.TabIndex = 3;
@@ -816,20 +1031,25 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 583);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(914, 583);
+            this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ModifyInfo";
             this.Text = "Modify Information";
             this.Load += new System.EventHandler(this.ModifyInfo_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.student_info_tabPage.ResumeLayout(false);
             this.student_new_info_groupBox.ResumeLayout(false);
             this.student_new_info_groupBox.PerformLayout();
             this.student_current_info_groupBox.ResumeLayout(false);
             this.student_current_info_groupBox.PerformLayout();
+            this.teacher_info_tabPage.ResumeLayout(false);
+            this.teacher_new_info_groupBox.ResumeLayout(false);
+            this.teacher_new_info_groupBox.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.course_info_tabPage.ResumeLayout(false);
             this.course_new_info_groupBox.ResumeLayout(false);
             this.course_new_info_groupBox.PerformLayout();
@@ -844,7 +1064,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage student_info_tabPage;
         private System.Windows.Forms.GroupBox student_current_info_groupBox;
         private System.Windows.Forms.Label label3;
@@ -914,5 +1134,24 @@
         private System.Windows.Forms.TextBox choosing_student_id_textbox;
         private System.Windows.Forms.Button choosing_clear_button;
         private System.Windows.Forms.Button choosing_query_button;
+        private System.Windows.Forms.TabPage teacher_info_tabPage;
+        private System.Windows.Forms.Button modify_course_info_link;
+        private System.Windows.Forms.Button teacher_apply_button;
+        private System.Windows.Forms.GroupBox teacher_new_info_groupBox;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox teacher_new_name_textBox;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox teacher_new_id_textBox;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button teacher_delete_button;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox teacher_current_name_textBox;
+        private System.Windows.Forms.Button teacher_clear_button;
+        private System.Windows.Forms.Button teacher_query_button;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox teacher_current_id_textBox;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox teacher_courses_textBox;
+        private System.Windows.Forms.Label label26;
     }
 }

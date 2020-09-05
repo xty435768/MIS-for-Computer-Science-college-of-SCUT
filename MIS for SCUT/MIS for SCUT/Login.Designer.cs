@@ -34,6 +34,9 @@
             this.password = new System.Windows.Forms.TextBox();
             this.log_in = new System.Windows.Forms.Button();
             this.loading_text = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -63,7 +66,6 @@
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(382, 34);
             this.username.TabIndex = 2;
-            this.username.Text = "20203";
             // 
             // password
             // 
@@ -72,15 +74,15 @@
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(382, 34);
             this.password.TabIndex = 3;
-            this.password.Text = "123456";
             this.password.UseSystemPasswordChar = true;
+            this.password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.password_KeyDown);
             // 
             // log_in
             // 
             this.log_in.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.log_in.Location = new System.Drawing.Point(319, 359);
+            this.log_in.Location = new System.Drawing.Point(277, 359);
             this.log_in.Name = "log_in";
-            this.log_in.Size = new System.Drawing.Size(155, 47);
+            this.log_in.Size = new System.Drawing.Size(255, 68);
             this.log_in.TabIndex = 4;
             this.log_in.Text = "Log in";
             this.log_in.UseVisualStyleBackColor = true;
@@ -90,18 +92,51 @@
             // 
             this.loading_text.AutoSize = true;
             this.loading_text.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.loading_text.Location = new System.Drawing.Point(573, 369);
+            this.loading_text.Location = new System.Drawing.Point(655, 400);
             this.loading_text.Name = "loading_text";
             this.loading_text.Size = new System.Drawing.Size(104, 27);
             this.loading_text.TabIndex = 5;
             this.loading_text.Text = "Loading...";
             this.loading_text.Visible = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(201, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(405, 31);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Management Information System ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(232, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(323, 31);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Computer Science College ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Location = new System.Drawing.Point(174, 150);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(446, 31);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "South China University of Technology";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.loading_text);
             this.Controls.Add(this.log_in);
             this.Controls.Add(this.password);
@@ -111,7 +146,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Login";
-            this.Text = "Manage Information System of Computer Science College in SCUT v0.1";
+            this.Text = "Login to MIS";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,6 +160,9 @@
         private System.Windows.Forms.TextBox password;
         private System.Windows.Forms.Button log_in;
         private System.Windows.Forms.Label loading_text;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 

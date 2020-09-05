@@ -103,6 +103,7 @@ namespace MIS_for_SCUT
             progressBar1.Maximum = dgv.Columns.Count;
             progressBar1.Value = 0;
             add_button.Enabled = false;
+            progressBar1.Maximum = dgv.Rows.Count;
             new Thread(add_process) { IsBackground = true }.Start();
         }
 
@@ -115,7 +116,7 @@ namespace MIS_for_SCUT
             {
                 DataTable entry_year_dt = SQL_Help.ExecuteDataTable("select entrance_year from student_info where id=@id;", connection, new MySqlParameter[] { new MySqlParameter("@id", MySqlDbType.VarChar) { Value = students[i].ToString().Substring(0, 10) } });
                 int entry_year = Convert.ToInt32(entry_year_dt.Rows[0][0]);
-                bool lower_bound_satisfied = Convert.ToInt32(school_year_label.Text.Substring(school_year_label.Text.Length - 9, 4)) - entry_year >= year_lower_bound;
+                bool lower_bound_satisfied = Convert.ToInt32(year) - entry_year >= year_lower_bound;
                 bool upper_bound_satisfied = Convert.ToInt32(year) <= year_upper_bound;
                 if (!lower_bound_satisfied || !upper_bound_satisfied)
                 {

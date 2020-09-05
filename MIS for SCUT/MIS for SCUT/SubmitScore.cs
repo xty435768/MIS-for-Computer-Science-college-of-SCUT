@@ -58,6 +58,8 @@ namespace MIS_for_SCUT
             bool index = course_list_items.Contains(course_comboBox.Text);
             if (index)
             {
+                ClearDGV();
+                RefreshYearData();
                 RefreshDGV();
             }
             else
@@ -65,34 +67,18 @@ namespace MIS_for_SCUT
                 ClearDGV();
             }
         }
-        private void ClearDGV()
+        private void ClearDGV(bool clear_year = true)
         {
             course_score_dt = new DataTable();
             dgv.DataSource = null;
             dgv.Columns.Clear();
+            if(clear_year) year_comboBox.Items.Clear();
         }
 
         private void RefreshDGV()
         {
-            ClearDGV();
-            DataTable year_dt = SQL_Help.ExecuteDataTable("select chosen_year from course_choosing_info where (teacher_id=@teacher_id and course_id=@course_id);", connection, new MySqlParameter[]
-            {
-                new MySqlParameter("@teacher_id",MySqlDbType.VarChar){ Value = current_teacher_id },
-                new MySqlParameter("@course_id",MySqlDbType.VarChar){ Value = course_comboBox.Text.Substring(0,7) }
-            });
-            if (year_dt.Rows.Count == 0)
-            {
-                Common.ShowInfo("Empty query result!", "Currently there is no student in course " + course_comboBox.Text + "!");
-                ClearDGV();
-                return;
-            }
-            for (int i = 0; i < year_dt.Rows.Count; i++)
-            {
-                year_comboBox.Items.Add(year_dt.Rows[i][0]);
-            }
-            year_comboBox.Text = year_comboBox.Items[0].ToString();
             course_score_dt = SQL_Help.ExecuteDataTable(
-                "select course_choosing_info.student_id,student_info.name,course_choosing_info.score,course_choosing_info.chosen_year,course_choosing_info.course_id,course_info.name,course_info.credit " +
+                "select distinct course_choosing_info.student_id,student_info.name,course_choosing_info.score,course_choosing_info.chosen_year,course_choosing_info.course_id,course_info.name,course_info.credit " +
                 "from course_choosing_info join student_info join course_info " +
                 "on (course_choosing_info.student_id=student_info.id and course_info.id=course_choosing_info.course_id) " +
                 "where (course_choosing_info.course_id=@course_id and course_choosing_info.teacher_id=@teacher_id and course_choosing_info.chosen_year=@year);", connection, new MySqlParameter[]
@@ -112,6 +98,27 @@ namespace MIS_for_SCUT
             modify_btn.DefaultCellStyle.NullValue = "Modify";
             dgv.Columns.Add(modify_btn);
             dgv.Columns["modify"].DisplayIndex = 0;
+
+        }
+
+        private void RefreshYearData()
+        {
+            DataTable year_dt = SQL_Help.ExecuteDataTable("select distinct chosen_year from course_choosing_info where (teacher_id=@teacher_id and course_id=@course_id);", connection, new MySqlParameter[]
+            {
+                new MySqlParameter("@teacher_id",MySqlDbType.VarChar){ Value = current_teacher_id },
+                new MySqlParameter("@course_id",MySqlDbType.VarChar){ Value = course_comboBox.Text.Substring(0,7) }
+            });
+            if (year_dt.Rows.Count == 0)
+            {
+                Common.ShowInfo("Empty query result!", "Currently there is no student in course " + course_comboBox.Text + "!");
+                ClearDGV();
+                return;
+            }
+            for (int i = 0; i < year_dt.Rows.Count; i++)
+            {
+                year_comboBox.Items.Add(year_dt.Rows[i][0]);
+            }
+            year_comboBox.Text = year_comboBox.Items[0].ToString();
 
         }
 
@@ -136,12 +143,21 @@ namespace MIS_for_SCUT
                         })
                         {
                             cim.ShowDialog();
+                            ClearDGV();
+                            RefreshYearData();
                             RefreshDGV();
                         }
                     }
 
                 }
             }
+        }
+
+        private void year_comboBox_TextChanged(object sender, EventArgs e)
+        {
+            if (dgv.DataSource == null) return;
+            ClearDGV(false);
+            RefreshDGV();
         }
     }
 }

@@ -40,13 +40,22 @@
             this.addCourseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.queryCourseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCourseChoosingInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.submitScoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.About = new System.Windows.Forms.ToolStripMenuItem();
-            this.submitScoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.queryStudentInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgv = new System.Windows.Forms.DataGridView();
             this.queryStudentScoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.queryCourseInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.queryTeacherInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.queryAverageScoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.singleStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.studentsInSameClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.singleCourseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.About = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgv = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
@@ -121,7 +130,7 @@
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(280, 30);
-            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Text = "Logout/Exit";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // Course
@@ -139,7 +148,7 @@
             // addCourseToolStripMenuItem
             // 
             this.addCourseToolStripMenuItem.Name = "addCourseToolStripMenuItem";
-            this.addCourseToolStripMenuItem.Size = new System.Drawing.Size(333, 30);
+            this.addCourseToolStripMenuItem.Size = new System.Drawing.Size(423, 30);
             this.addCourseToolStripMenuItem.Text = "Add Course";
             this.addCourseToolStripMenuItem.Visible = false;
             this.addCourseToolStripMenuItem.Click += new System.EventHandler(this.addCourseToolStripMenuItem_Click);
@@ -147,24 +156,35 @@
             // queryCourseToolStripMenuItem
             // 
             this.queryCourseToolStripMenuItem.Name = "queryCourseToolStripMenuItem";
-            this.queryCourseToolStripMenuItem.Size = new System.Drawing.Size(333, 30);
-            this.queryCourseToolStripMenuItem.Text = "Query Course Information";
+            this.queryCourseToolStripMenuItem.Size = new System.Drawing.Size(423, 30);
+            this.queryCourseToolStripMenuItem.Text = "Query Course Choosing Information";
             this.queryCourseToolStripMenuItem.Click += new System.EventHandler(this.queryCourseToolStripMenuItem_Click);
             // 
             // addCourseChoosingInfoToolStripMenuItem
             // 
             this.addCourseChoosingInfoToolStripMenuItem.Name = "addCourseChoosingInfoToolStripMenuItem";
-            this.addCourseChoosingInfoToolStripMenuItem.Size = new System.Drawing.Size(333, 30);
+            this.addCourseChoosingInfoToolStripMenuItem.Size = new System.Drawing.Size(423, 30);
             this.addCourseChoosingInfoToolStripMenuItem.Text = "Add Course Choosing Info";
             this.addCourseChoosingInfoToolStripMenuItem.Visible = false;
             this.addCourseChoosingInfoToolStripMenuItem.Click += new System.EventHandler(this.addCourseChoosingInfoToolStripMenuItem_Click);
+            // 
+            // submitScoreToolStripMenuItem
+            // 
+            this.submitScoreToolStripMenuItem.Name = "submitScoreToolStripMenuItem";
+            this.submitScoreToolStripMenuItem.Size = new System.Drawing.Size(423, 30);
+            this.submitScoreToolStripMenuItem.Text = "Submit Score";
+            this.submitScoreToolStripMenuItem.Visible = false;
+            this.submitScoreToolStripMenuItem.Click += new System.EventHandler(this.submitScoreToolStripMenuItem_Click);
             // 
             // informationToolStripMenuItem
             // 
             this.informationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.modifyInformationToolStripMenuItem,
             this.queryStudentInformationToolStripMenuItem,
-            this.queryStudentScoreToolStripMenuItem});
+            this.queryStudentScoreToolStripMenuItem,
+            this.queryCourseInformationToolStripMenuItem,
+            this.queryTeacherInformationToolStripMenuItem,
+            this.queryAverageScoreToolStripMenuItem});
             this.informationToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.informationToolStripMenuItem.Name = "informationToolStripMenuItem";
             this.informationToolStripMenuItem.Size = new System.Drawing.Size(133, 29);
@@ -173,32 +193,101 @@
             // modifyInformationToolStripMenuItem
             // 
             this.modifyInformationToolStripMenuItem.Name = "modifyInformationToolStripMenuItem";
-            this.modifyInformationToolStripMenuItem.Size = new System.Drawing.Size(338, 30);
+            this.modifyInformationToolStripMenuItem.Size = new System.Drawing.Size(445, 30);
             this.modifyInformationToolStripMenuItem.Text = "Modify Information";
             this.modifyInformationToolStripMenuItem.Visible = false;
             this.modifyInformationToolStripMenuItem.Click += new System.EventHandler(this.modifyInformationToolStripMenuItem_Click);
             // 
+            // queryStudentInformationToolStripMenuItem
+            // 
+            this.queryStudentInformationToolStripMenuItem.Name = "queryStudentInformationToolStripMenuItem";
+            this.queryStudentInformationToolStripMenuItem.Size = new System.Drawing.Size(445, 30);
+            this.queryStudentInformationToolStripMenuItem.Text = "Query Student Information";
+            this.queryStudentInformationToolStripMenuItem.Click += new System.EventHandler(this.queryStudentInformationToolStripMenuItem_Click);
+            // 
+            // queryStudentScoreToolStripMenuItem
+            // 
+            this.queryStudentScoreToolStripMenuItem.Name = "queryStudentScoreToolStripMenuItem";
+            this.queryStudentScoreToolStripMenuItem.Size = new System.Drawing.Size(445, 30);
+            this.queryStudentScoreToolStripMenuItem.Text = "Query Student Score/Course Choosing";
+            this.queryStudentScoreToolStripMenuItem.Click += new System.EventHandler(this.queryStudentScoreToolStripMenuItem_Click);
+            // 
+            // queryCourseInformationToolStripMenuItem
+            // 
+            this.queryCourseInformationToolStripMenuItem.Name = "queryCourseInformationToolStripMenuItem";
+            this.queryCourseInformationToolStripMenuItem.Size = new System.Drawing.Size(445, 30);
+            this.queryCourseInformationToolStripMenuItem.Text = "Query Course Information";
+            this.queryCourseInformationToolStripMenuItem.Click += new System.EventHandler(this.queryCourseInformationToolStripMenuItem_Click);
+            // 
+            // queryTeacherInformationToolStripMenuItem
+            // 
+            this.queryTeacherInformationToolStripMenuItem.Name = "queryTeacherInformationToolStripMenuItem";
+            this.queryTeacherInformationToolStripMenuItem.Size = new System.Drawing.Size(445, 30);
+            this.queryTeacherInformationToolStripMenuItem.Text = "Query Teacher Information";
+            this.queryTeacherInformationToolStripMenuItem.Click += new System.EventHandler(this.queryTeacherInformationToolStripMenuItem_Click);
+            // 
+            // queryAverageScoreToolStripMenuItem
+            // 
+            this.queryAverageScoreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.singleStudentToolStripMenuItem,
+            this.allStudentToolStripMenuItem,
+            this.studentsInSameClassToolStripMenuItem,
+            this.singleCourseToolStripMenuItem});
+            this.queryAverageScoreToolStripMenuItem.Name = "queryAverageScoreToolStripMenuItem";
+            this.queryAverageScoreToolStripMenuItem.Size = new System.Drawing.Size(445, 30);
+            this.queryAverageScoreToolStripMenuItem.Text = "Query Average Score";
+            // 
+            // singleStudentToolStripMenuItem
+            // 
+            this.singleStudentToolStripMenuItem.Name = "singleStudentToolStripMenuItem";
+            this.singleStudentToolStripMenuItem.Size = new System.Drawing.Size(299, 30);
+            this.singleStudentToolStripMenuItem.Text = "Single Student";
+            this.singleStudentToolStripMenuItem.Click += new System.EventHandler(this.singleStudentToolStripMenuItem_Click);
+            // 
+            // allStudentToolStripMenuItem
+            // 
+            this.allStudentToolStripMenuItem.Name = "allStudentToolStripMenuItem";
+            this.allStudentToolStripMenuItem.Size = new System.Drawing.Size(299, 30);
+            this.allStudentToolStripMenuItem.Text = "All Student";
+            this.allStudentToolStripMenuItem.Click += new System.EventHandler(this.allStudentToolStripMenuItem_Click);
+            // 
+            // studentsInSameClassToolStripMenuItem
+            // 
+            this.studentsInSameClassToolStripMenuItem.Name = "studentsInSameClassToolStripMenuItem";
+            this.studentsInSameClassToolStripMenuItem.Size = new System.Drawing.Size(299, 30);
+            this.studentsInSameClassToolStripMenuItem.Text = "Students in same class";
+            this.studentsInSameClassToolStripMenuItem.Click += new System.EventHandler(this.studentsInSameClassToolStripMenuItem_Click);
+            // 
+            // singleCourseToolStripMenuItem
+            // 
+            this.singleCourseToolStripMenuItem.Name = "singleCourseToolStripMenuItem";
+            this.singleCourseToolStripMenuItem.Size = new System.Drawing.Size(299, 30);
+            this.singleCourseToolStripMenuItem.Text = "Single Course";
+            this.singleCourseToolStripMenuItem.Click += new System.EventHandler(this.singleCourseToolStripMenuItem_Click);
+            // 
             // About
             // 
+            this.About.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.About.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.About.Name = "About";
             this.About.Size = new System.Drawing.Size(80, 29);
             this.About.Text = "About";
             // 
-            // submitScoreToolStripMenuItem
+            // helpToolStripMenuItem
             // 
-            this.submitScoreToolStripMenuItem.Name = "submitScoreToolStripMenuItem";
-            this.submitScoreToolStripMenuItem.Size = new System.Drawing.Size(333, 30);
-            this.submitScoreToolStripMenuItem.Text = "Submit Score";
-            this.submitScoreToolStripMenuItem.Visible = false;
-            this.submitScoreToolStripMenuItem.Click += new System.EventHandler(this.submitScoreToolStripMenuItem_Click);
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(146, 30);
+            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
-            // queryStudentInformationToolStripMenuItem
+            // aboutToolStripMenuItem
             // 
-            this.queryStudentInformationToolStripMenuItem.Name = "queryStudentInformationToolStripMenuItem";
-            this.queryStudentInformationToolStripMenuItem.Size = new System.Drawing.Size(338, 30);
-            this.queryStudentInformationToolStripMenuItem.Text = "Query Student Information";
-            this.queryStudentInformationToolStripMenuItem.Click += new System.EventHandler(this.queryStudentInformationToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(146, 30);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // dgv
             // 
@@ -213,13 +302,6 @@
             this.dgv.Size = new System.Drawing.Size(1061, 544);
             this.dgv.TabIndex = 1;
             // 
-            // queryStudentScoreToolStripMenuItem
-            // 
-            this.queryStudentScoreToolStripMenuItem.Name = "queryStudentScoreToolStripMenuItem";
-            this.queryStudentScoreToolStripMenuItem.Size = new System.Drawing.Size(338, 30);
-            this.queryStudentScoreToolStripMenuItem.Text = "Query Student Score";
-            this.queryStudentScoreToolStripMenuItem.Click += new System.EventHandler(this.queryStudentScoreToolStripMenuItem_Click);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -233,7 +315,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "MainWindow";
-            this.Text = "MainWindow";
+            this.Text = "Manage Information System of Computer Science College for SCUT v1.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.Load += new System.EventHandler(this.MainWindow_Load);
@@ -266,5 +348,14 @@
         private System.Windows.Forms.ToolStripMenuItem queryStudentInformationToolStripMenuItem;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.ToolStripMenuItem queryStudentScoreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem queryCourseInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem queryTeacherInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem queryAverageScoreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem singleStudentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allStudentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem studentsInSameClassToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem singleCourseToolStripMenuItem;
     }
 }

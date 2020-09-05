@@ -114,8 +114,10 @@ namespace MIS_for_SCUT
             if (update_result > 0)
             {
                 Common.ShowInfo("Done!", "Modify successfully!");
+                student_current_id_textBox.Text = student_new_id_textBox.Text;
+                student_query_button.PerformClick();
             }
-
+            
 
         }
 
@@ -319,9 +321,10 @@ namespace MIS_for_SCUT
             if (apply_result_basic_info > 0 && apply_result_teacher_info > 0 && delete_from_old_result > 0 && add_to_new_result > 0)
             {
                 Common.ShowInfo("Done!", "Modify successfully!");
-                course_clear_button.PerformClick();
+                course_current_id_textBox.Text = course_new_id_textBox.Text;
+                course_query_button.PerformClick();
             }
-
+            
         }
 
         private int DeleteCourseFromOldTeacher(string teacher_id,string course_id)
@@ -387,18 +390,18 @@ namespace MIS_for_SCUT
 
         }
 
-        public static Dictionary<string, string> choosing_data_table_columns_name_mapping = new Dictionary<string, string>()
-        {
-            ["chosen_year"] = "Chosen Year",
-            ["score"] = "Score",
-            ["student_id"] = "Student",
-            ["teacher_id"] = "Teacher",
-            ["course_id"] = "Course",
-            ["name"] = "Name",
-            ["name2"] = "Course Name",
-            ["name1"] = "Teacher Name",
-            ["credit"] = "Credit"
-        };
+        //public static Dictionary<string, string> choosing_data_table_columns_name_mapping = new Dictionary<string, string>()
+        //{
+        //    ["chosen_year"] = "Chosen Year",
+        //    ["score"] = "Score",
+        //    ["student_id"] = "Student",
+        //    ["teacher_id"] = "Teacher",
+        //    ["course_id"] = "Course",
+        //    ["name"] = "Name",
+        //    ["name2"] = "Course Name",
+        //    ["name1"] = "Teacher Name",
+        //    ["credit"] = "Credit"
+        //};
 
         private void choosing_query_button_Click(object sender, EventArgs e)
         {
@@ -409,7 +412,7 @@ namespace MIS_for_SCUT
                 return;
             }
             student_choosing_dt = SQL_Help.ExecuteDataTable(
-                "select distinct course_choosing_info.chosen_year,course_choosing_info.score,course_choosing_info.student_id,student_info.name,course_choosing_info.teacher_id,teacher_info.name,course_choosing_info.course_id,course_info.name,course_info.credit " +
+                "select distinct course_choosing_info.course_id as 'Course ID',course_info.name as 'Course Name',course_choosing_info.student_id as 'Student ID',student_info.name as 'Student Name',course_choosing_info.teacher_id as 'Teacher ID',teacher_info.name as 'Teacher Name',course_choosing_info.chosen_year as 'Chosen Year',course_choosing_info.score as 'Score',course_info.credit as 'Credit' " +
                 "from course_choosing_info join course_info join student_info join teacher_info " +
                 "on (course_choosing_info.course_id=course_info.id and course_choosing_info.teacher_id=teacher_info.id and course_choosing_info.student_id=student_info.id) " +
                 "where course_choosing_info.student_id = @sid;", connection, new MySqlParameter[] { new MySqlParameter("@sid", MySqlDbType.VarChar) { Value = choosing_student_id_textbox.Text } });
@@ -422,13 +425,13 @@ namespace MIS_for_SCUT
                 return;
             }
             dgv.DataSource = new BindingSource() { DataSource = student_choosing_dt };
-            for (int i = 0; i < student_choosing_dt.Columns.Count; i++)
-            {
-                dgv.Columns[i].HeaderText = choosing_data_table_columns_name_mapping[student_choosing_dt.Columns[i].Caption];
-            }
+            //for (int i = 0; i < student_choosing_dt.Columns.Count; i++)
+            //{
+            //    dgv.Columns[i].HeaderText = choosing_data_table_columns_name_mapping[student_choosing_dt.Columns[i].Caption];
+            //}
             
-            dgv.Columns["score"].DisplayIndex = dgv.Columns.Count - 1;
-            dgv.Columns["chosen_year"].DisplayIndex = dgv.Columns.Count - 1;
+            //dgv.Columns["score"].DisplayIndex = dgv.Columns.Count - 1;
+            //dgv.Columns["chosen_year"].DisplayIndex = dgv.Columns.Count - 1;
             DataGridViewButtonColumn modify_btn = new DataGridViewButtonColumn();
             modify_btn.HeaderText = "Modify";
             modify_btn.Name = "modify";
@@ -460,12 +463,12 @@ namespace MIS_for_SCUT
                     using (ChoosingInfoModify cim = new ChoosingInfoModify()
                     {
                         connection = connection,
-                        year = dgv.Rows[e.RowIndex].Cells["chosen_year"].Value.ToString(),
-                        score = dgv.Rows[e.RowIndex].Cells["score"].Value.ToString(),
-                        student = string.Format("{0}({1})", dgv.Rows[e.RowIndex].Cells["student_id"].Value, dgv.Rows[e.RowIndex].Cells["name"].Value),
-                        teacher = string.Format("{0}({1})", dgv.Rows[e.RowIndex].Cells["teacher_id"].Value, dgv.Rows[e.RowIndex].Cells["name1"].Value),
-                        course = string.Format("{0}({1})", dgv.Rows[e.RowIndex].Cells["course_id"].Value, dgv.Rows[e.RowIndex].Cells["name2"].Value),
-                        credit = dgv.Rows[e.RowIndex].Cells["credit"].Value.ToString(),
+                        year = dgv.Rows[e.RowIndex].Cells["Chosen Year"].Value.ToString(),
+                        score = dgv.Rows[e.RowIndex].Cells["Score"].Value.ToString(),
+                        student = string.Format("{0}({1})", dgv.Rows[e.RowIndex].Cells["Student ID"].Value, dgv.Rows[e.RowIndex].Cells["Student Name"].Value),
+                        teacher = string.Format("{0}({1})", dgv.Rows[e.RowIndex].Cells["Teacher ID"].Value, dgv.Rows[e.RowIndex].Cells["Teacher Name"].Value),
+                        course = string.Format("{0}({1})", dgv.Rows[e.RowIndex].Cells["Course ID"].Value, dgv.Rows[e.RowIndex].Cells["Course Name"].Value),
+                        credit = dgv.Rows[e.RowIndex].Cells["Credit"].Value.ToString(),
                         role = Common.UserType.ADMIN
                     })
                     {
@@ -476,14 +479,14 @@ namespace MIS_for_SCUT
                 }
                 else if(dgv.Columns[e.ColumnIndex].DefaultCellStyle.NullValue.ToString() == "Delete")
                 {
-                    if (Common.ShowChoice("Delete Confirm", string.Format("Are you sure to delete the record ({0},{1},{2},{3})", dgv.Rows[e.RowIndex].Cells["name"].Value, dgv.Rows[e.RowIndex].Cells["name2"].Value, dgv.Rows[e.RowIndex].Cells["name1"].Value, dgv.Rows[e.RowIndex].Cells["chosen_year"].Value) + "?", MessageBoxIcon.Warning) == DialogResult.Yes)
+                    if (Common.ShowChoice("Delete Confirm", string.Format("Are you sure to delete the record ({0},{1},{2},{3})", dgv.Rows[e.RowIndex].Cells["Student Name"].Value, dgv.Rows[e.RowIndex].Cells["Course Name"].Value, dgv.Rows[e.RowIndex].Cells["Teacher Name"].Value, dgv.Rows[e.RowIndex].Cells["Chosen Year"].Value) + "?", MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
                         int delete_result = SQL_Help.ExecuteNonQuery("delete from course_choosing_info where (course_id=@course_id and teacher_id=@teacher_id and student_id=@student_id and chosen_year=@year);", connection, new MySqlParameter[]
                             {
-                                new MySqlParameter("@course_id",MySqlDbType.VarChar){ Value = dgv.Rows[e.RowIndex].Cells["course_id"].Value },
-                                new MySqlParameter("@teacher_id",MySqlDbType.VarChar){ Value = dgv.Rows[e.RowIndex].Cells["teacher_id"].Value },
-                                new MySqlParameter("@student_id",MySqlDbType.VarChar){ Value = dgv.Rows[e.RowIndex].Cells["student_id"].Value },
-                                new MySqlParameter("@year",MySqlDbType.Int32){ Value = dgv.Rows[e.RowIndex].Cells["chosen_year"].Value },
+                                new MySqlParameter("@course_id",MySqlDbType.VarChar){ Value = dgv.Rows[e.RowIndex].Cells["Course ID"].Value },
+                                new MySqlParameter("@teacher_id",MySqlDbType.VarChar){ Value = dgv.Rows[e.RowIndex].Cells["Teacher ID"].Value },
+                                new MySqlParameter("@student_id",MySqlDbType.VarChar){ Value = dgv.Rows[e.RowIndex].Cells["Student ID"].Value },
+                                new MySqlParameter("@year",MySqlDbType.Int32){ Value = dgv.Rows[e.RowIndex].Cells["Chosen Year"].Value },
                             });
                         if (delete_result > 0)
                         {
@@ -494,6 +497,121 @@ namespace MIS_for_SCUT
                     }
                 }
             }
+        }
+
+        private void modify_course_info_link_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectTab(course_info_tabPage);
+        }
+
+        private void teacher_query_button_Click(object sender, EventArgs e)
+        {
+            if (teacher_current_id_textBox.Text.Length == 0)
+            {
+                Common.ShowError("Null value error!", "ID can not be empty!");
+                return;
+            }
+            teacher_current_id_textBox.ReadOnly = true;
+            MySqlParameter teacher_id_parameter = new MySqlParameter("@id", MySqlDbType.VarChar) { Value = teacher_current_id_textBox.Text };
+            DataTable current_info_dt = SQL_Help.ExecuteDataTable("select name from teacher_info where id=@id;", connection, new MySqlParameter[] { teacher_id_parameter });
+            if (current_info_dt.Rows.Count == 0)
+            {
+                Common.ShowError("Empty query result!", "No corresponding teacher found with id = " + teacher_current_id_textBox.Text + ".\nPlease check again.");
+                teacher_current_id_textBox.ReadOnly = false;
+            }
+            else
+            {
+                teacher_new_name_textBox.Text = teacher_current_name_textBox.Text = current_info_dt.Rows[0][0].ToString();
+                teacher_new_id_textBox.Text = teacher_current_id_textBox.Text;
+                teacher_new_info_groupBox.Enabled = true;
+                teacher_apply_button.Enabled = true;
+                teacher_delete_button.Enabled = true;
+            }
+            DataTable teach_course_dt = SQL_Help.ExecuteDataTable("select id,name from course_info where teacher_id=@id;", connection, new MySqlParameter[] { teacher_id_parameter });
+            teacher_courses_textBox.Clear();
+            for (int i = 0; i < teach_course_dt.Rows.Count; i++)
+            {
+                teacher_courses_textBox.Text += string.Format("{0},{1}"+Environment.NewLine, teach_course_dt.Rows[i][0].ToString(), teach_course_dt.Rows[i][1].ToString());
+            }
+        }
+
+        private void teacher_clear_button_Click(object sender, EventArgs e)
+        {
+            teacher_current_name_textBox.Clear();
+            teacher_current_id_textBox.Clear();
+            teacher_courses_textBox.Clear();
+            teacher_current_id_textBox.ReadOnly = false;
+            teacher_new_info_groupBox.Enabled = false;
+            teacher_new_name_textBox.Clear();
+            teacher_new_id_textBox.Clear();
+            teacher_apply_button.Enabled = false;
+            teacher_delete_button.Enabled = false;
+
+        }
+
+        private void teacher_delete_button_Click(object sender, EventArgs e)
+        {
+            string delete_notice = ((teacher_courses_textBox.TextLength == 0) ? ""
+                : "This teacher still have some course! \nIf continue, all the information about the courses that this teacher teach will be deleted!") + 
+                string.Format("Are you sure to delete teacher ({0},{1})?", teacher_current_id_textBox.Text, teacher_current_name_textBox.Text);
+            if (Common.ShowChoice("Delete Confirm", delete_notice, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                MySqlParameter teacher_id_parameter = new MySqlParameter("@id", MySqlDbType.VarChar) { Value = teacher_current_id_textBox.Text };
+                if (SQL_Help.ExecuteNonQuery("delete from teacher_info where id=@id;delete from course_info where teacher_id=@id;delete from user_data where username=@id;",
+                    connection,new MySqlParameter[] { teacher_id_parameter }) > 0)
+                {
+                    Common.ShowInfo("Done", "Delete successfully!");
+                    teacher_clear_button.PerformClick();
+                }
+            }
+        }
+
+        private void teacher_apply_button_Click(object sender, EventArgs e)
+        {
+            if (teacher_new_id_textBox.Text.Length == 0 || teacher_new_name_textBox.Text.Length == 0)
+            {
+                Common.ShowError("Format error!", "All the field should not be null! Please check again!");
+                return;
+            }
+            if (!Regex.IsMatch(teacher_new_id_textBox.Text, @"^\d{5}$"))
+            {
+                Common.ShowError("Format checking error!", "ID format error! The length of teacher ID should be 5!");
+                return;
+            }
+            if (teacher_new_name_textBox.TextLength == 0)
+            {
+                Common.ShowError("Format checking error!", "Name format error! Teacher name cannot be empty!");
+                return;
+            }
+            MySqlParameter teacher_id_parameter = new MySqlParameter("@id", MySqlDbType.VarChar) { Value = teacher_current_id_textBox.Text };
+            MySqlParameter teacher_new_id_parameter = new MySqlParameter("@new_id", MySqlDbType.VarChar) { Value = teacher_new_id_textBox.Text };
+            int id_modify_result = SQL_Help.ExecuteNonQuery("update teacher_info set id=@new_id,name=@new_name where id=@id;", connection, new MySqlParameter[] 
+            {
+                teacher_id_parameter,
+                teacher_new_id_parameter,
+                new MySqlParameter("@new_name",MySqlDbType.VarChar) { Value = teacher_new_name_textBox.Text }
+            });
+            if (id_modify_result < 0) return;
+            if (teacher_new_id_textBox.Text == teacher_current_id_textBox.Text)
+            {
+                Common.ShowInfo("Done!", "Modify successfully!");
+                teacher_query_button.PerformClick();
+                return;
+            }
+            int other_modify_result = SQL_Help.ExecuteNonQuery("update user_data set username=@new_id where username=@id;update course_info set teacher_id=@new_id where teacher_id=@id;", connection,
+                new MySqlParameter[] { teacher_new_id_parameter,teacher_id_parameter });
+            if (other_modify_result >= 0)
+            {
+                Common.ShowInfo("Done!", "Modify successfully!");
+                teacher_current_id_textBox.Text = teacher_new_id_textBox.Text;
+                teacher_query_button.PerformClick();
+            }
+        }
+
+        private void choosing_student_id_textbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                choosing_query_button.PerformClick();
         }
     }
 }

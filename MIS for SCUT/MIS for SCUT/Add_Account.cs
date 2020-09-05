@@ -172,6 +172,7 @@ namespace MIS_for_SCUT
             open_csv.Enabled = false;
             add_button.Enabled = false;
             batch_add_button.Enabled = false;
+            progressBar1.Maximum = dgv.Rows.Count;
             new Thread(batch_add_process) { IsBackground = true }.Start();
         }
 

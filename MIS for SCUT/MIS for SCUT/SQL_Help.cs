@@ -27,6 +27,7 @@ namespace MIS_for_SCUT
 
         public static int ExecuteNonQuery(string sql, MySqlConnection connection, MySqlParameter[] param = null)
         {
+            if (connection.State == ConnectionState.Closed) connection.Open(); 
             try
             {
                 MySqlTransaction transaction = connection.BeginTransaction();
@@ -62,12 +63,14 @@ namespace MIS_for_SCUT
             catch (Exception e)
             {
                 Common.ShowError("Connection Error", e.Message);
+                throw e;
             }
             return -1;
         }
 
         public static DataTable ExecuteDataTable(string sql, MySqlConnection connection, MySqlParameter[] param = null)
         {
+            if (connection.State == ConnectionState.Closed) connection.Open();
             try
             {
                 MySqlTransaction transaction = connection.BeginTransaction();
@@ -105,6 +108,7 @@ namespace MIS_for_SCUT
             catch (Exception e)
             {
                 Common.ShowError("Connection Error", e.Message);
+                throw e;
             }
             return null;
         }

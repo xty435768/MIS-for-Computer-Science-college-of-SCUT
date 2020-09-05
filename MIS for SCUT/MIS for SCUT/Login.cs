@@ -73,6 +73,7 @@ namespace MIS_for_SCUT
                         Hide();
                         if (m.ShowDialog() == DialogResult.OK)
                         {
+                            if (m.logout_or_exit) Application.Exit();
                             password.Enabled = true;
                             log_in.Enabled = true;
                             username.Enabled = true;
@@ -83,6 +84,11 @@ namespace MIS_for_SCUT
                     }
                 }
             }
+        }
+
+        private void password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) log_in.PerformClick();
         }
     }
 }

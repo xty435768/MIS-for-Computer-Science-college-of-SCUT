@@ -98,6 +98,7 @@
             this.year_comboBox.Name = "year_comboBox";
             this.year_comboBox.Size = new System.Drawing.Size(108, 32);
             this.year_comboBox.TabIndex = 6;
+            this.year_comboBox.TextChanged += new System.EventHandler(this.year_comboBox_TextChanged);
             // 
             // label2
             // 

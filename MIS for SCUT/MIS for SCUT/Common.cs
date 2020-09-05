@@ -29,9 +29,9 @@ namespace MIS_for_SCUT
             MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public static DialogResult ShowChoice(string title,string text, MessageBoxIcon mb = MessageBoxIcon.Question)
+        public static DialogResult ShowChoice(string title,string text, MessageBoxIcon mbi = MessageBoxIcon.Question, MessageBoxButtons mbb = MessageBoxButtons.YesNo)
         {
-            return MessageBox.Show(text, title, MessageBoxButtons.YesNo, mb);
+            return MessageBox.Show(text, title, mbb, mbi);
         }
 
         public static string GetSaveFilePath(string filter)
